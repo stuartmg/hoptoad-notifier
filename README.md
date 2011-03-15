@@ -1,7 +1,7 @@
 Java Hoptoad Notifier
 =====================
 
-Java Hoptoad Notifier is a small project to allow Java/Log4j projects to send errors to Hoptoad (or any other service that implements the Hoptoad API interface). It is currently being used to monitor all of our Java applications at BiddingForGood.
+Java Hoptoad Notifier is a small project to allow Java/Log4j projects to send errors to Hoptoad (or any other service that implements the Hoptoad API interface). It is currently being used to monitor all of our Java applications at [BiddingForGood](http://www.biddingforgood.com).
 
 Basic Setup
 -----------
