@@ -42,11 +42,11 @@ Add the following to your web.xml file:
 
 <pre><code>
   &lt;filter>
-      &lt;filter-name>HoptoadNotifierFilter&lt;/filter-name>
-      &lt;filter-class>com.radialaspect.hoptoad.servlet.HoptoadNotifierFilter&lt;/filter-class>
+    &lt;filter-name>HoptoadNotifierFilter&lt;/filter-name>
+    &lt;filter-class>com.radialaspect.hoptoad.servlet.HoptoadNotifierFilter&lt;/filter-class>
   &lt;/filter>
-	&lt;filter-mapping>
-		&lt;filter-name>HoptoadNotifierFilter&lt;/filter-name>
-		&lt;url-pattern>/*&lt;/url-pattern>
-	&lt;/filter-mapping>
+  &lt;filter-mapping>
+  	&lt;filter-name>HoptoadNotifierFilter&lt;/filter-name>
+  	&lt;url-pattern>/*&lt;/url-pattern>
+  &lt;/filter-mapping>
 </code></pre>
