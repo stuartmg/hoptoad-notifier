@@ -41,12 +41,12 @@ If you are using a web application there is a servlet filter that you can includ
 Add the following to your web.xml file:
 
 <pre><code>
-  <filter>
-      <filter-name>HoptoadNotifierFilter</filter-name>
-      <filter-class>com.radialaspect.hoptoad.servlet.HoptoadNotifierFilter</filter-class>
-  </filter>
-	<filter-mapping>
-		<filter-name>HoptoadNotifierFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+  <&lt;filter>
+      &lt;filter-name>HoptoadNotifierFilter&lt;/filter-name>
+      &lt;filter-class>com.radialaspect.hoptoad.servlet.HoptoadNotifierFilter&lt;/filter-class>
+  &lt;/filter>
+	&lt;filter-mapping>
+		&lt;filter-name>HoptoadNotifierFilter&lt;/filter-name>
+		&lt;url-pattern>/*&lt;/url-pattern>
+	&lt;/filter-mapping>
 </code></pre>
