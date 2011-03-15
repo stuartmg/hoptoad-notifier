@@ -1,0 +1,103 @@
+<project name="hoptoad-notifier" default="package" basedir=".">
+
+    <!-- directories -->
+	<property name="src.dir" value="src" />
+    <property name="test.dir" value="test" />
+    <property name="lib.dir" value="lib" />
+
+    <property name="build.dir" value="build" />
+	<property name="build.classes" value="${build.dir}/classes" />
+	<property name="build.dist" value="${build.dir}/dist" />
+	<property name="build.test" value="${build.dir}/test" />
+	<property name="test.results.dir" value="${build.dir}/test-results" />
+    
+    <!-- files -->
+    <property name="jar.file" value="hoptoad-notifier.jar" />
+	
+	<!-- building -->
+	<property name="compile.debug" value="true" />
+	<property name="compile.deprecation" value="true" />
+	<property name="compile.optimize" value="true" />
+	<property name="compile.source" value="1.5" />
+	
+	<!-- ********************************** -->
+	<!-- CLASSPATH -->
+	<!-- ********************************** -->
+	<path id="compile.classpath">
+		<fileset dir="${lib.dir}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<path id="test.classpath">
+		<dirset dir="${build.test}" />
+		<path refid="compile.classpath" />
+		<dirset dir="${build.classes}" />
+	</path>
+
+	<!-- CLEAN -->
+	<target name="clean" description="Delete old build and dist directories">
+		<delete dir="${test.results.dir}" />
+	    <delete dir="${build.test}" />
+		<delete dir="${build.dist}" />
+		<delete dir="${build.classes}" />
+		<delete dir="${build.dir}" />
+	</target>
+
+	<!-- PREPARE -->
+	<target name="prepare" description="Create required build directories" >
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${build.classes}" />
+		<mkdir dir="${build.dist}" />
+	    <mkdir dir="${build.test}" />
+	    <mkdir dir="${test.results.dir}" />
+	</target>
+
+	<target name="compile" description="Compile Java sources" depends="prepare">
+	    <!-- compile source -->
+		<javac srcdir="${src.dir}" destdir="${build.classes}" source="${compile.source}" debug="${compile.debug}" deprecation="${compile.deprecation}" optimize="${compile.optimize}">
+			<classpath refid="compile.classpath" />
+		</javac>
+	    <!-- copy resource files -->
+		<copy todir="${build.classes}">
+			<fileset dir="${src.dir}" excludes="**/*.java" />
+		</copy>
+	</target>
+
+	<!-- PACKAGE -->
+	<target name="package" depends="clean, compile">
+		<echo>Building hoptoad-notifier jar...</echo>
+		<jar destfile="${build.dist}/${jar.file}">
+			<fileset dir="${build.classes}" />
+		</jar>
+	    <copy file="${lib.dir}/xstream-1.3.1.jar" todir="${build.dist}" />
+	</target>
+	
+	
+	<!-- COMPILE TESTS -->
+	<target name="compile_tests" depends="compile">
+		<javac srcdir="${test.dir}" destdir="${build.test}" source="${compile.source}">
+			<classpath refid="test.classpath" />
+		</javac>
+		<copy todir="${build.test}">
+			<fileset dir="${test.dir}" excludes="**/*.java" />
+		</copy>
+	</target>
+
+	<!-- RUN TESTS -->
+	<target name="test" depends="clean, compile_tests" description="compile and run unit tests">
+		<junit fork="true" errorProperty="test.failed" failureProperty="test.failed">
+			<classpath refid="test.classpath" />
+
+			<formatter type="brief" usefile="false" />
+			<formatter type="xml" />
+			<batchtest todir="${test.results.dir}">
+				<fileset dir="${build.test}">
+					<include name="**/*Test.class" />
+				</fileset>
+			</batchtest>
+		</junit>
+	    
+		<fail message="Tests failed! Check test reports." if="test.failed" />
+	</target>
+</project>
