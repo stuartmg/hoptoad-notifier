@@ -1,8 +1,10 @@
-# Java Hoptoad Notifier
+Java Hoptoad Notifier
+=====================
 
 Java Hoptoad Notifier is a small project to allow Java/Log4j projects to send errors to Hoptoad (or any other service that implements the Hoptoad API interface). It is currently being used to monitor all of our Java applications at BiddingForGood.
 
-## Basic Setup
+Basic Setup
+-----------
 
 To capture errors, you will need to configure a log4j appender and then log your exceptions to it:
 
@@ -50,3 +52,8 @@ Add the following to your web.xml file:
   	&lt;url-pattern>/*&lt;/url-pattern>
   &lt;/filter-mapping>
 </code></pre>
+
+3rd Party Libraries
+-------------------
+
+This project depends on the [XStream library](http://xstream.codehaus.org/) to generate the XML to send to Hoptoad.
