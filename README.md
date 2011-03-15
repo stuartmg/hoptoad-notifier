@@ -41,7 +41,7 @@ If you are using a web application there is a servlet filter that you can includ
 Add the following to your web.xml file:
 
 <pre><code>
-  <&lt;filter>
+  &lt;filter>
       &lt;filter-name>HoptoadNotifierFilter&lt;/filter-name>
       &lt;filter-class>com.radialaspect.hoptoad.servlet.HoptoadNotifierFilter&lt;/filter-class>
   &lt;/filter>
