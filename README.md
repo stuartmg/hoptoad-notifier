@@ -15,6 +15,10 @@ To capture errors, you will need to configure a log4j appender and then log your
     &lt;param name="url" value="" />
   -->
 
+  &lt;!-- fluxtracker url - uncomment this line to use FluxTracker instead of hoptoad
+    &lt;param name="url" value="www.fluxtracker.com" />
+  -->
+
   &lt;!-- enter your hoptoad api key  -->
 	&lt;param name="api_key" value="&lt;your api key here>" />
 
@@ -52,6 +56,16 @@ Add the following to your web.xml file:
   	&lt;url-pattern>/*&lt;/url-pattern>
   &lt;/filter-mapping>
 </code></pre>
+
+FluxTracker
+-----------
+
+[FluxTracker](http://www.fluxtracker.com) is a great new service that combines the error logging capabilities of hoptoad with a lighthouse style issue tracker. I highly recommend it!
+
+To use [FluxTracker](http://www.fluxtracker.com) instead of hoptoad, you can add a "url" parameter to your configuration that points at "www.fluxtracker.com".
+
+Be sure to use your [FluxTracker API Key](https://www.fluxtracker.com/pages/api/tokens) and set the "ssl" parameter to true if you do this!
+
 
 3rd Party Libraries
 -------------------
